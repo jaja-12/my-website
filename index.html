@@ -1,251 +1,244 @@
-
 <!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jaliane|Fullstack Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-    <style>
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-      body {
-        background: linear-gradient(-45deg, #0f172a, #1e293b, #111827, #0f172a);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-      }
-      @keyframes grow {
-        0% { width: 0%; }
-        100% { width: var(--width); }
-      }
-      .animate-grow { animation: grow 2s ease-in-out forwards; }
-    </style>
-  </head>
-  <body class="text-gray-200 min-h-screen relative">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaliane | Fullstack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-    <!-- Particle background -->
-    <div id="tsparticles" class="absolute inset-0 -z-10"></div>
+  <style>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    body {
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #111827, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes grow {
+      0% { width: 0%; }
+      100% { width: var(--width); }
+    }
+    .animate-grow { animation: grow 2s ease-in-out forwards; }
+  </style>
+</head>
+<body class="text-gray-200 min-h-screen relative">
 
-    <!-- Navbar -->
-    <nav class="p-6 flex justify-between items-center bg-gray-900/60 backdrop-blur-md sticky top-0 z-20">
-      <h1 class="text-2xl font-bold text-blue-400">Jaja.dev</h1>
-      <div class="flex items-center space-x-4">
-        <ul class="flex space-x-6">
-          <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
-          <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
-          <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
-        </ul>
-        <button id="theme-toggle" class="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-sm">Toggle Theme</button>
+<!-- Particle background -->
+<div id="tsparticles" class="absolute inset-0 -z-10"></div>
+
+<!-- Navbar -->
+<nav class="p-6 flex justify-between items-center bg-gray-900/60 backdrop-blur-md sticky top-0 z-20">
+  <h1 class="text-2xl font-bold text-blue-400">Jaja.dev</h1>
+  <div class="flex items-center space-x-4">
+    <ul class="flex space-x-6">
+      <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
+      <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" class="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-sm">Toggle Theme</button>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="flex flex-col items-center justify-center text-center py-20 px-6">
+  <img src="./style.css/images/jaja.jpeg" alt="Your Photo" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-blue-500 shadow-lg mb-6 animate-bounce object-cover" />
+  <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Hi, I’m <span class="text-blue-400">Jaliane</span></h2>
+  <p class="text-lg sm:text-xl max-w-2xl">A passionate <span class="text-blue-300">Full-Stack Developer</span> building modern, scalable, and user-friendly web applications from front-end to back-end.</p>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-4xl mx-auto mb-10">
+  <h3 class="text-3xl font-bold mb-6 text-center">About Me</h3>
+  <p class="text-gray-300 leading-relaxed">I craft responsive interfaces with React and Tailwind, build secure APIs with Node.js and Express, and manage databases like MongoDB and SQL. My mission is to turn ideas into reliable, impactful solutions.</p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-16 px-6 max-w-4xl mx-auto">
+  <h3 class="text-3xl font-bold mb-10 text-center">My Skills</h3>
+  <div class="space-y-6">
+    <div>
+      <h4 class="text-lg font-semibold">JavaScript</h4>
+      <div class="bg-gray-700 rounded-full h-4 w-full">
+        <div class="bg-blue-500 h-4 rounded-full animate-grow" style="--width:90%"></div>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="flex flex-col items-center justify-center text-center py-20 px-6">
-      <img src="./style.css/images/jaja.jpeg" alt="Your Photo" class="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg mb-6 animate-bounce" />
-      <h2 class="text-4xl font-extrabold mb-4">Hi, I’m <span class="text-blue-400">Jaliane</span></h2>
-      <p class="text-lg max-w-2xl">A passionate <span class="text-blue-300">Full-Stack Developer</span> building modern, scalable, and user-friendly web applications from front-end to back-end.</p>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-4xl mx-auto mb-10">
-      <h3 class="text-3xl font-bold mb-6 text-center">About Me</h3>
-      <p class="text-gray-300 leading-relaxed">I craft responsive interfaces with React and Tailwind, build secure APIs with Node.js and Express, and manage databases like MongoDB and SQL. My mission is to turn ideas into reliable, impactful solutions.</p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-16 px-6 max-w-4xl mx-auto">
-      <h3 class="text-3xl font-bold mb-10 text-center">My Skills</h3>
-      <div class="space-y-6">
-        <div>
-          <h4 class="text-lg font-semibold">JavaScript</h4>
-          <div class="bg-gray-700 rounded-full h-4 w-full">
-            <div class="bg-blue-500 h-4 rounded-full animate-grow" style="--width:90%"></div>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold">React</h4>
-          <div class="bg-gray-700 rounded-full h-4 w-full">
-            <div class="bg-blue-400 h-4 rounded-full animate-grow" style="--width:85%"></div>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold">Node.js</h4>
-          <div class="bg-gray-700 rounded-full h-4 w-full">
-            <div class="bg-green-500 h-4 rounded-full animate-grow" style="--width:80%"></div>
-          </div>
-        </div>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold">React</h4>
+      <div class="bg-gray-700 rounded-full h-4 w-full">
+        <div class="bg-blue-400 h-4 rounded-full animate-grow" style="--width:85%"></div>
       </div>
-    </section>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold">Node.js</h4>
+      <div class="bg-gray-700 rounded-full h-4 w-full">
+        <div class="bg-green-500 h-4 rounded-full animate-grow" style="--width:80%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-gray-900 text-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <section id="projects" class="py-20 bg-gray-900 text-white">
-        <div class="max-w-6xl mx-auto px-6">
-          <h2 class="text-4xl font-bold text-center mb-12"> My Projects</h2>
-      
-          <div class="grid md:grid-cols-3 gap-8">
-      
-            <!-- Project Card 1 -->
-            <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
-              <img src="https://images.unsplash.com/photo-1606788075766-c6e0b7e3a6a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8laptop%20workspace%20website%20design&ixlib=rb-4.0.3&q=80&w=600" 
-                   alt="Portfolio Website" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <h3 class="text-2xl font-semibold mb-2">Portfolio Website</h3>
-                <p class="text-gray-300 mb-4">
-                  A personal portfolio built with HTML, CSS, and Tailwind showcasing my skills and work.
-                </p>
-              </div>
-              <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-                <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
-              </div>
-            </div>
-      
-            <!-- Project Card 2 -->
-            <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
-              <img src="https://images.unsplash.com/photo-1591696331110-f5639237e176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" 
-                   alt="E-Commerce App" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <h3 class="text-2xl font-semibold mb-2">E-Commerce App</h3>
-                <p class="text-gray-300 mb-4">
-                  A fullstack shopping app with user authentication, product catalog, and payment system.
-                </p>
-              </div>
-              <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-                <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
-              </div>
-            </div>
-      
-            <!-- Project Card 3 (React Dashboard) -->
-            <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
-              <img src="https://images.openai.com/thumbnails/url/_cZisXicu1mUUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7J9UrNM4ryycn0NDMrDgi2LCz3KPQyDwpw9PJzTnFy8zAoLcqpqow3csvJrogI9YpPNC7Iqio2CapQKwYAwuApfQ" 
-                   alt="React Dashboard" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <h3 class="text-2xl font-semibold mb-2">React Dashboard</h3>
-                <p class="text-gray-300 mb-4">
-                  A product management dashboard built with React, featuring data visualization, product CRUD operations, and user-friendly interface.
-                </p>
-              </div>
-              <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-                <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
-              </div>
-            </div>
-      
-          </div>
+      <!-- Project Card 1: Portfolio Website -->
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
+             alt="Portfolio Website" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Portfolio Website</h3>
+          <p class="text-gray-300 mb-4">
+            A personal portfolio built with HTML, CSS, and Tailwind showcasing my skills and projects.
+          </p>
         </div>
-      </section>
-      
-      
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 px-6 max-w-4xl mx-auto bg-gray-900/70 rounded-2xl shadow-lg mb-10">
-      <h3 class="text-3xl font-bold mb-10 text-center">Testimonials</h3>
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transform transition">
-          <p class="text-gray-300 mb-4">"Jaja built our website with incredible attention to detail. Highly recommend!"</p>
-          <h5 class="text-blue-400 font-semibold">— Christine</h5>
-        </div>
-        <div class="bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transform transition">
-          <p class="text-gray-300 mb-4">"Fast, reliable, and professional. Truly a fullstack expert."</p>
-          <h5 class="text-blue-400 font-semibold">— Christian</h5>
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="https://jaja-12.vercel.app" target="_blank" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
+          <a href="https://github.com/jaja-12/my-website" target="_blank" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
         </div>
       </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-4xl mx-auto mb-10">
-        <script>
-            document.getElementById("contact-form").addEventListener("submit", async function(e) {
-              e.preventDefault();
-          
-              const name = document.getElementById("name").value;
-              const email = document.getElementById("email").value;
-              const message = document.getElementById("message").value;
-          
-              const response = await fetch("http://localhost:5000/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, message }),
-              });
-          
-              const result = await response.json();
-              alert(result.success || result.error);
-            });
-          </script>
-          
-      <h3 class="text-3xl font-bold mb-6 text-center">Contact Me</h3>
-      <form action="https://formspree.io/f/xgvnklyw" method="POST" class="space-y-6">
-        <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none" />
-        <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none" />
-        <textarea name="message" placeholder="Your Message" rows="4" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none"></textarea>
-        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-3 rounded font-semibold transition">Send Message</button>
-      </form>
-    </section>
+      <!-- Project Card 2: E-Commerce App -->
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
+             alt="E-Commerce App" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">E-Commerce App</h3>
+          <p class="text-gray-300 mb-4">
+            A fullstack shopping app with authentication, product catalog, and payment system.
+          </p>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
+          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+        </div>
+      </div>
 
-    <!-- Social Media Section -->
-    <section id="socials" class="py-10 text-center">
-      <h3 class="text-2xl font-bold mb-6">Connect with Me</h3>
-      <div class="flex justify-center space-x-6">
+      <!-- Project Card 3: React Dashboard -->
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+        <img src="https://images.unsplash.com/photo-1581091012184-1f8db0d6b8b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
+             alt="React Dashboard" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">React Dashboard</h3>
+          <p class="text-gray-300 mb-4">
+            A product management dashboard built with React, featuring data visualization and CRUD operations.
+          </p>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
+          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project Card 4: Chat App -->
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
+             alt="Chat App" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Chat App</h3>
+          <p class="text-gray-300 mb-4">
+            Real-time chat application using Socket.io and Node.js, with private and group chat features.
+          </p>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
+          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project Card 5: Blog Platform -->
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
+             alt="Blog Platform" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Blog Platform</h3>
+          <p class="text-gray-300 mb-4">
+            Blogging platform built with React and Node.js, supporting posts, comments, and user authentication.
+          </p>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
+          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-4xl mx-auto mb-10">
+  <h3 class="text-3xl font-bold mb-6 text-center">Contact Me</h3>
+  <form action="https://formspree.io/f/xgvnklyw" method="POST" id="contact-form" class="space-y-6">
+    <input type="text" id="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none" />
+    <input type="email" id="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none" />
+    <textarea id="message" placeholder="Your Message" rows="4" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none"></textarea>
+    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-3 rounded font-semibold transition">Send Message</button>
+  </form>
+</section>
+
+<!-- Social Media Section -->
+<section id="socials" class="py-10 text-center">
+  <h3 class="text-2xl font-bold mb-6">Connect with Me</h3>
+  <div class="flex justify-center space-x-6">
     <!-- GitHub -->
     <a href="https://github.com/jaja-12" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-full shadow-lg transition transform hover:scale-110">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.41 7.86 10.95.58.11.79-.25.79-.56 0-.28-.01-1.03-.02-2.01-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.3-1.68-1.3-1.68-1.07-.73.08-.72.08-.72 1.19.09 1.81 1.22 1.81 1.22 1.05 1.8 2.75 1.28 3.42.98.11-.76.41-1.28.74-1.57-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.17a11.1 11.1 0 0 1 5.79 0c2.2-1.48 3.17-1.17 3.17-1.17.63 1.59.23 2.76.11 3.05.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.24 5.63.42.36.8 1.07.8 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.68.8.56C20.21 21.41 23.5 17.09 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
       </svg>
     </a>
-  
-<!-- Instagram -->
-<a href="https://www.instagram.com/@Jaja/" target="_blank"
-   class="w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-110"
-   style="background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);">
-  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="white" viewBox="0 0 24 24">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.958.24 2.418.403a4.918 4.918 0 0 1 1.774 1.033 4.918 4.918 0 0 1 1.033 1.774c.163.46.347 1.248.403 2.418.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.958-.403 2.418a4.918 4.918 0 0 1-1.033 1.774 4.918 4.918 0 0 1-1.774 1.033c-.46.163-1.248.347-2.418.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.958-.24-2.418-.403a4.918 4.918 0 0 1-1.774-1.033 4.918 4.918 0 0 1-1.033-1.774c-.163-.46-.347-1.248-.403-2.418C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.958.403-2.418a4.918 4.918 0 0 1 1.033-1.774 4.918 4.918 0 0 1 1.774-1.033c.46-.163 1.248-.347 2.418-.403C8.416 2.175 8.796 2.163 12 2.163zm0 1.838c-3.17 0-3.54.012-4.788.07-1.047.049-1.614.222-1.99.37a3.09 3.09 0 0 0-1.13.735 3.09 3.09 0 0 0-.735 1.13c-.148.376-.321.943-.37 1.99-.058 1.248-.07 1.618-.07 4.788s.012 3.54.07 4.788c.049 1.047.222 1.614.37 1.99.17.436.393.815.735 1.13.317.317.694.547 1.13.735.376.148.943.321 1.99.37 1.248.058 1.618.07 4.788.07s3.54-.012 4.788-.07c1.047-.049 1.614-.222 1.99-.37a3.09 3.09 0 0 0 1.13-.735 3.09 3.09 0 0 0 .735-1.13c.148-.376.321-.943.37-1.99.058-1.248.07-1.618.07-4.788s-.012-3.54-.07-4.788c-.049-1.047-.222-1.614-.37-1.99a3.09 3.09 0 0 0-.735-1.13 3.09 3.09 0 0 0-1.13-.735c-.376-.148-.943-.321-1.99-.37-1.248-.058-1.618-.07-4.788-.07zm0 3.677a5.16 5.16 0 1 1 0 10.32 5.16 5.16 0 0 1 0-10.32zm0 1.838a3.322 3.322 0 1 0 0 6.644 3.322 3.322 0 0 0 0-6.644zm5.406-.462a1.2 1.2 0 1 1-2.401 0 1.2 1.2 0 0 1 2.401 0z"/>
-  </svg>
-</a>
-
-  
-    <!-- X (Twitter) -->
-    <a href="https://x.com/your-username" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-sky-500 rounded-full shadow-lg transition transform hover:scale-110">
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/@Jaja/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-110" style="background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="white" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.958.24 2.418.403a4.918 4.918 0 0 1 1.774 1.033 4.918 4.918 0 0 1 1.033 1.774c.163.46.347 1.248.403 2.418.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.958-.403 2.418a4.918 4.918 0 0 1-1.033 1.774 4.918 4.918 0 0 1-1.774 1.033c-.46.163-1.248.347-2.418.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.958-.24-2.418-.403a4.918 4.918 0 0 1-1.774-1.033 4.918 4.918 0 0 1-1.033-1.774c-.163-.46-.347-1.248-.403-2.418C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.958.403-2.418a4.918 4.918 0 0 1 1.033-1.774 4.918 4.918 0 0 1 1.774-1.033c.46-.163 1.248-.347 2.418-.403C8.416 2.175 8.796 2.163 12 2.163zm0 1.838c-3.17 0-3.54.012-4.788.07-1.047.049-1.614.222-1.99.37a3.09 3.09 0 0 0-1.13.735 3.09 3.09 0 0 0-.735 1.13c-.148.376-.321.943-.37 1.99-.058 1.248-.07 1.618-.07 4.788s.012 3.54.07 4.788c.049 1.047.222 1.614.37 1.99.17.436.393.815.735 1.13.317.317.694.547 1.13.735.376.148.943.321 1.99.37 1.248.058 1.618.07 4.788.07s3.54-.012 4.788-.07c1.047-.049 1.614-.222 1.99-.37a3.09 3.09 0 0 0 1.13-.735 3.09 3.09 0 0 0 .735-1.13c.148-.376.321-.943.37-1.99.058-1.248.07-1.618.07-4.788s-.012-3.54-.07-4.788c-.049-1.047-.222-1.614-.37-1.99a3.09 3.09 0 0 0-.735-1.13 3.09 3.09 0 0 0-1.13-.735c-.376-.148-.943-.321-1.99-.37-1.248-.058-1.618-.07-4.788-.07zm0 3.677a5.16 5.16 0 1 1 0 10.32 5.16 5.16 0 0 1 0-10.32zm0 1.838a3.322 3.322 0 1 0 0 6.644 3.322 3.322 0 0 0 0-6.644zm5.406-.462a1.2 1.2 0 1 1-2.401 0 1.2 1.2 0 0 1 2.401 0z"/>
+      </svg>
+    </a>
+     <!-- X (Twitter) -->
+     <a href="https://x.com/your-username" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-sky-500 rounded-full shadow-lg transition transform hover:scale-110">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
         <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
       </svg>
     </a>
   </div>
+  </div>
+</section>
 
-  </section>
-  
-    <footer class="py-6 text-center bg-gray-900/60">© 2025 Jaja. Built with ❤️</footer>
+<footer class="py-6 text-center bg-gray-900/60">© 2025 Jaja. Built with ❤️</footer>
 
-    <script>
-      tsParticles.load("tsparticles", {
-        background: { color: "transparent" },
-        fpsLimit: 60,
-        interactivity: {
-          events: {
-            onHover: { enable: true, mode: "repulse" },
-            resize: true,
-          },
-          modes: {
-            repulse: { distance: 100, duration: 0.4 },
-          },
-        },
-        particles: {
-          color: { value: "#38bdf8" },
-          links: { color: "#38bdf8", distance: 150, enable: true, opacity: 0.3, width: 1 },
-          move: { direction: "none", enable: true, outModes: "bounce", random: false, speed: 1, straight: false },
-          number: { density: { enable: true, area: 800 }, value: 60 },
-          opacity: { value: 0.5 },
-          shape: { type: "circle" },
-          size: { value: { min: 1, max: 4 } },
-        },
-        detectRetina: true,
-      });
-    </script>
-  </body>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  tsParticles.load("tsparticles", {
+    background: { color: "transparent" },
+    fpsLimit: 60,
+    interactivity: {
+      events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+      modes: { repulse: { distance: 100, duration: 0.4 } }
+    },
+    particles: {
+      color: { value: "#38bdf8" },
+      links: { color: "#38bdf8", distance: 150, enable: true, opacity: 0.3, width: 1 },
+      move: { direction: "none", enable: true, outModes: "bounce", random: false, speed: 1, straight: false },
+      number: { density: { enable: true, area: 800 }, value: 60 },
+      opacity: { value: 0.5 },
+      shape: { type: "circle" },
+      size: { value: { min: 1, max: 4 } },
+    },
+    detectRetina: true,
+  });
+
+  document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    alert(`Message sent! Name: ${name}, Email: ${email}`);
+  });
+</script>
+</body>
 </html>
