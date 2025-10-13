@@ -7,6 +7,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
   <style>
     @keyframes gradientShift {
@@ -14,35 +16,230 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    
     body {
       background: linear-gradient(-45deg, #0f172a, #1e293b, #111827, #0f172a);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
+      scroll-behavior: smooth;
     }
+    
     @keyframes grow {
       0% { width: 0%; }
       100% { width: var(--width); }
     }
-    .animate-grow { animation: grow 2s ease-in-out forwards; }
+    
+    .animate-grow { 
+      animation: grow 2s ease-in-out forwards; 
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .slide-in-up {
+      animation: slideInUp 0.6s ease-out forwards;
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .skill-bar {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .project-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+    
+    .theme-transition {
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .counter {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+      transform-origin: left;
+      z-index: 50;
+    }
+    
+    /* Light theme styles */
+    .light {
+      background: linear-gradient(-45deg, #f8fafc, #e2e8f0, #f1f5f9, #f8fafc);
+    }
+    
+    .light .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .light .text-gray-200 {
+      color: #1e293b;
+    }
+    
+    .light .text-gray-300 {
+      color: #475569;
+    }
+    
+    .light .text-gray-400 {
+      color: #64748b;
+    }
+    
+    .light .bg-gray-900\/70 {
+      background-color: rgba(248, 250, 252, 0.8);
+    }
+    
+    .light .bg-gray-800 {
+      background-color: #f1f5f9;
+    }
+    
+    .light .bg-gray-700 {
+      background-color: #e2e8f0;
+    }
+    
+    .light .border-gray-600 {
+      border-color: #cbd5e1;
+    }
+    
+    .light .border-gray-700 {
+      border-color: #94a3b8;
+    }
+    
+    .light .hover\:bg-gray-600:hover {
+      background-color: #cbd5e1;
+    }
+    
+    .light .hover\:bg-gray-700:hover {
+      background-color: #e2e8f0;
+    }
+    
+    .light .hover\:bg-gray-800:hover {
+      background-color: #f1f5f9;
+    }
   </style>
 </head>
 <body class="text-gray-200 min-h-screen relative">
+
+<!-- Scroll Progress Indicator -->
+<div class="scroll-indicator" id="scrollIndicator"></div>
 
 <!-- Particle background -->
 <div id="tsparticles" class="absolute inset-0 -z-10"></div>
 
 <!-- Navbar -->
-<nav class="p-6 flex justify-between items-center bg-gray-900/60 backdrop-blur-md sticky top-0 z-20">
-  <h1 class="text-2xl font-bold text-blue-400">Jaja.dev</h1>
+<nav class="p-6 flex justify-between items-center glass-effect sticky top-0 z-20 theme-transition">
+  <h1 class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">Jaja.dev</h1>
   <div class="flex items-center space-x-4">
-    <ul class="flex space-x-6">
-      <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
-      <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
-      <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+    <ul class="hidden md:flex space-x-6">
+      <li><a href="#about" class="hover:text-blue-400 transition-colors duration-300 relative group">
+        About
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+      </a></li>
+      <li><a href="#skills" class="hover:text-blue-400 transition-colors duration-300 relative group">
+        Skills
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+      </a></li>
+      <li><a href="#projects" class="hover:text-blue-400 transition-colors duration-300 relative group">
+        Projects
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+      </a></li>
+      <li><a href="#contact" class="hover:text-blue-400 transition-colors duration-300 relative group">
+        Contact
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+      </a></li>
     </ul>
-    <button id="theme-toggle" class="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-sm">Toggle Theme</button>
+    <button id="theme-toggle" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded text-sm transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+      <i class="fas fa-moon" id="theme-icon"></i>
+      <span id="theme-text">Dark</span>
+    </button>
+    <button id="mobile-menu-toggle" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden">
+  <div class="absolute right-0 top-0 h-full w-64 bg-gray-900/95 backdrop-blur-md p-6 transform translate-x-full transition-transform duration-300">
+    <button id="mobile-menu-close" class="absolute top-6 right-6 text-gray-300 hover:text-white">
+      <i class="fas fa-times text-xl"></i>
+    </button>
+    <ul class="space-y-6 mt-12">
+      <li><a href="#about" class="block text-lg hover:text-blue-400 transition-colors">About</a></li>
+      <li><a href="#skills" class="block text-lg hover:text-blue-400 transition-colors">Skills</a></li>
+      <li><a href="#projects" class="block text-lg hover:text-blue-400 transition-colors">Projects</a></li>
+      <li><a href="#contact" class="block text-lg hover:text-blue-400 transition-colors">Contact</a></li>
+    </ul>
+  </div>
+</div>
 
 <!-- Hero Section -->
 <section class="flex flex-col items-center justify-center text-center py-20 px-6">
@@ -59,24 +256,61 @@
 
 <!-- Skills Section -->
 <section id="skills" class="py-16 px-6 max-w-4xl mx-auto">
-  <h3 class="text-3xl font-bold mb-10 text-center">My Skills</h3>
+  <h3 class="text-3xl font-bold mb-10 text-center" data-aos="fade-up">My Skills</h3>
   <div class="space-y-6">
-    <div>
-      <h4 class="text-lg font-semibold">JavaScript</h4>
-      <div class="bg-gray-700 rounded-full h-4 w-full">
-        <div class="bg-blue-500 h-4 rounded-full animate-grow" style="--width:90%"></div>
+    <div data-aos="fade-right" data-aos-delay="100">
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="text-lg font-semibold flex items-center">
+          <i class="fab fa-js-square text-yellow-400 mr-2"></i>JavaScript
+        </h4>
+        <span class="text-sm text-gray-400">90%</span>
+      </div>
+      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 h-4 rounded-full animate-grow" style="--width:90%"></div>
       </div>
     </div>
-    <div>
-      <h4 class="text-lg font-semibold">React</h4>
-      <div class="bg-gray-700 rounded-full h-4 w-full">
-        <div class="bg-blue-400 h-4 rounded-full animate-grow" style="--width:85%"></div>
+    <div data-aos="fade-right" data-aos-delay="200">
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="text-lg font-semibold flex items-center">
+          <i class="fab fa-react text-cyan-400 mr-2"></i>React
+        </h4>
+        <span class="text-sm text-gray-400">85%</span>
+      </div>
+      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
+        <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-4 rounded-full animate-grow" style="--width:85%"></div>
       </div>
     </div>
-    <div>
-      <h4 class="text-lg font-semibold">Node.js</h4>
-      <div class="bg-gray-700 rounded-full h-4 w-full">
-        <div class="bg-green-500 h-4 rounded-full animate-grow" style="--width:80%"></div>
+    <div data-aos="fade-right" data-aos-delay="300">
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="text-lg font-semibold flex items-center">
+          <i class="fab fa-node-js text-green-400 mr-2"></i>Node.js
+        </h4>
+        <span class="text-sm text-gray-400">80%</span>
+      </div>
+      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
+        <div class="bg-gradient-to-r from-green-400 to-green-500 h-4 rounded-full animate-grow" style="--width:80%"></div>
+      </div>
+    </div>
+    <div data-aos="fade-right" data-aos-delay="400">
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="text-lg font-semibold flex items-center">
+          <i class="fab fa-python text-blue-400 mr-2"></i>Python
+        </h4>
+        <span class="text-sm text-gray-400">75%</span>
+      </div>
+      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
+        <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-4 rounded-full animate-grow" style="--width:75%"></div>
+      </div>
+    </div>
+    <div data-aos="fade-right" data-aos-delay="500">
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="text-lg font-semibold flex items-center">
+          <i class="fas fa-database text-purple-400 mr-2"></i>MongoDB
+        </h4>
+        <span class="text-sm text-gray-400">70%</span>
+      </div>
+      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
+        <div class="bg-gradient-to-r from-purple-400 to-purple-500 h-4 rounded-full animate-grow" style="--width:70%"></div>
       </div>
     </div>
   </div>
@@ -84,27 +318,64 @@
 <!-- Projects Section -->
 <section id="projects" class="py-20 bg-gray-900 text-white">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">My Projects</h2>
+    
+    <!-- Project Filter -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+      <button class="filter-btn active px-6 py-2 rounded-full bg-blue-500 text-white transition-all duration-300 hover:scale-105" data-filter="all">
+        All Projects
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105" data-filter="web">
+        Web Development
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105" data-filter="mobile">
+        Mobile Apps
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105" data-filter="fullstack">
+        Full Stack
+      </button>
+    </div>
+    
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
 
       <!-- Project Card 1: Portfolio Website -->
-      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
-             alt="Portfolio Website" class="w-full h-64 object-cover">
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="100" data-category="web">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
+               alt="Portfolio Website" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
         <div class="p-6">
-          <h3 class="text-2xl font-semibold mb-2">Portfolio Website</h3>
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-2xl font-semibold">Portfolio Website</h3>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full">HTML</span>
+              <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full">CSS</span>
+              <span class="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full">JS</span>
+            </div>
+          </div>
           <p class="text-gray-300 mb-4">
             A personal portfolio built with HTML, CSS, and Tailwind showcasing my skills and projects.
           </p>
+          <div class="flex items-center text-sm text-gray-400 mb-4">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Dec 2024</span>
+          </div>
         </div>
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-          <a href="https://jaja-12.vercel.app" target="_blank" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-          <a href="https://github.com/jaja-12/my-website" target="_blank" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <a href="https://jaja-12.vercel.app" target="_blank" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Live Demo</span>
+          </a>
+          <a href="https://github.com/jaja-12/my-website" target="_blank" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
 
       <!-- Project Card 2: E-Commerce App -->
-      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="200" data-category="fullstack">
         <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
              alt="E-Commerce App" class="w-full h-64 object-cover">
         <div class="p-6">
@@ -120,7 +391,7 @@
       </div>
 
       <!-- Project Card 3: React Dashboard -->
-      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="300" data-category="web">
         <img src="https://images.unsplash.com/photo-1581091012184-1f8db0d6b8b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
              alt="React Dashboard" class="w-full h-64 object-cover">
         <div class="p-6">
@@ -136,7 +407,7 @@
       </div>
 
       <!-- Project Card 4: Chat App -->
-      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="400" data-category="fullstack">
         <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
              alt="Chat App" class="w-full h-64 object-cover">
         <div class="p-6">
@@ -152,7 +423,7 @@
       </div>
 
       <!-- Project Card 5: Blog Platform -->
-      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 group">
+      <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="500" data-category="web">
         <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" 
              alt="Blog Platform" class="w-full h-64 object-cover">
         <div class="p-6">
@@ -173,13 +444,31 @@
 
 
 <!-- Contact Section -->
-<section id="contact" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-4xl mx-auto mb-10">
+<section id="contact" class="py-16 px-6 glass-effect rounded-2xl shadow-lg max-w-4xl mx-auto mb-10" data-aos="fade-up">
   <h3 class="text-3xl font-bold mb-6 text-center">Contact Me</h3>
   <form action="https://formspree.io/f/xgvnklyw" method="POST" id="contact-form" class="space-y-6">
-    <input type="text" id="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none" />
-    <input type="email" id="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none" />
-    <textarea id="message" placeholder="Your Message" rows="4" required class="w-full p-3 rounded bg-gray-800 border border-gray-700 focus:border-blue-400 focus:outline-none"></textarea>
-    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-3 rounded font-semibold transition">Send Message</button>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="relative">
+        <input type="text" id="name" placeholder="Your Name" required 
+               class="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-400 focus:outline-none transition-all duration-300 focus:ring-2 focus:ring-blue-400/20" />
+        <i class="fas fa-user absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+      </div>
+      <div class="relative">
+        <input type="email" id="email" placeholder="Your Email" required 
+               class="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-400 focus:outline-none transition-all duration-300 focus:ring-2 focus:ring-blue-400/20" />
+        <i class="fas fa-envelope absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+      </div>
+    </div>
+    <div class="relative">
+      <textarea id="message" placeholder="Your Message" rows="4" required 
+                class="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-400 focus:outline-none transition-all duration-300 focus:ring-2 focus:ring-blue-400/20 resize-none"></textarea>
+      <i class="fas fa-comment absolute right-4 top-4 text-gray-400"></i>
+    </div>
+    <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2">
+      <i class="fas fa-paper-plane"></i>
+      <span>Send Message</span>
+    </button>
+    <div id="form-status" class="hidden text-center py-2 px-4 rounded-lg"></div>
   </form>
 </section>
 
@@ -213,6 +502,14 @@
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+  });
+
+  // Initialize particles
   tsParticles.load("tsparticles", {
     background: { color: "transparent" },
     fpsLimit: 60,
@@ -232,13 +529,299 @@
     detectRetina: true,
   });
 
+  // Typing animation
+  document.addEventListener('DOMContentLoaded', function() {
+    // Name typing effect
+    const nameTyping = new Typed('#name-typing', {
+      strings: ['Jaliane'],
+      typeSpeed: 100,
+      showCursor: false
+    });
+
+    // Role typing effect
+    const roleTyping = new Typed('#role-typing', {
+      strings: ['Full-Stack Developer', 'Web Developer', 'Software Engineer'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true,
+      showCursor: false
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.counter');
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const count = parseInt(counter.innerText);
+        const increment = target / 100;
+        
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(() => animateCounters(), 20);
+        } else {
+          counter.innerText = target;
+        }
+      });
+    };
+
+    // Trigger counter animation when in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    const statsSection = document.querySelector('.grid.grid-cols-3');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+  });
+
+  // Scroll progress indicator
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('scrollIndicator').style.transform = `scaleX(${scrollPercent / 100})`;
+  });
+
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+  mobileMenuToggle.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    setTimeout(() => {
+      mobileMenu.querySelector('.absolute').classList.remove('translate-x-full');
+    }, 10);
+  });
+
+  mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.querySelector('.absolute').classList.add('translate-x-full');
+    setTimeout(() => {
+      mobileMenu.classList.add('hidden');
+    }, 300);
+  });
+
+  // Close mobile menu when clicking on links
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.querySelector('.absolute').classList.add('translate-x-full');
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+      }, 300);
+    });
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeText = document.getElementById('theme-text');
+  const body = document.body;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') {
+    body.classList.remove('dark');
+    body.classList.add('light');
+    themeIcon.className = 'fas fa-sun';
+    themeText.textContent = 'Light';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    if (body.classList.contains('dark')) {
+      body.classList.remove('dark');
+      body.classList.add('light');
+      themeIcon.className = 'fas fa-sun';
+      themeText.textContent = 'Light';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.classList.remove('light');
+      body.classList.add('dark');
+      themeIcon.className = 'fas fa-moon';
+      themeText.textContent = 'Dark';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // Enhanced contact form
   document.getElementById("contact-form").addEventListener("submit", async function(e) {
     e.preventDefault();
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-    alert(`Message sent! Name: ${name}, Email: ${email}`);
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+    const originalText = submitBtn.innerHTML;
+    
+    // Show loading state
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Sending...</span>';
+    submitBtn.disabled = true;
+    
+    try {
+      const formData = new FormData(this);
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        formStatus.className = 'text-green-400 bg-green-400/20 py-2 px-4 rounded-lg';
+        formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+        formStatus.classList.remove('hidden');
+        this.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      formStatus.className = 'text-red-400 bg-red-400/20 py-2 px-4 rounded-lg';
+      formStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
+      formStatus.classList.remove('hidden');
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      
+      // Hide status message after 5 seconds
+      setTimeout(() => {
+        formStatus.classList.add('hidden');
+      }, 5000);
+    }
   });
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add parallax effect to floating elements
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.float-animation');
+    
+    parallaxElements.forEach((element, index) => {
+      const speed = 0.5 + (index * 0.1);
+      element.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+  });
+
+  // Add hover effects to project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+
+  // Project filtering functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-500', 'text-white');
+        btn.classList.add('bg-gray-700', 'text-gray-300');
+      });
+      
+      // Add active class to clicked button
+      button.classList.add('active', 'bg-blue-500', 'text-white');
+      button.classList.remove('bg-gray-700', 'text-gray-300');
+      
+      const filter = button.getAttribute('data-filter');
+      
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        
+        if (filter === 'all' || category === filter) {
+          card.style.display = 'block';
+          card.style.animation = 'fadeInUp 0.5s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Add fadeInUp animation keyframes
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Performance optimizations
+  // Lazy loading for images
+  const images = document.querySelectorAll('img[data-src]');
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+
+  images.forEach(img => imageObserver.observe(img));
+
+  // Preload critical resources
+  const preloadLink = document.createElement('link');
+  preloadLink.rel = 'preload';
+  preloadLink.href = './style.css/images/jaja.jpeg';
+  preloadLink.as = 'image';
+  document.head.appendChild(preloadLink);
+
+  // Debounce scroll events for better performance
+  let scrollTimeout;
+  const debouncedScrollHandler = () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById('scrollIndicator').style.transform = `scaleX(${scrollPercent / 100})`;
+    }, 10);
+  };
+
+  window.addEventListener('scroll', debouncedScrollHandler);
+
+  // Optimize particle system performance
+  const optimizeParticles = () => {
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReducedMotion) {
+      document.getElementById('tsparticles').style.display = 'none';
+    }
+  };
+
+  optimizeParticles();
 </script>
 </body>
 </html>
