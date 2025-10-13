@@ -243,74 +243,124 @@
 
 <!-- Hero Section -->
 <section class="flex flex-col items-center justify-center text-center py-20 px-6">
-  <img src="./style.css/images/jaja.jpeg" alt="Your Photo" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-blue-500 shadow-lg mb-6 animate-bounce object-cover" />
   <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Hi, I’m <span class="text-blue-400">Jaliane</span></h2>
   <p class="text-lg sm:text-xl max-w-2xl">A passionate <span class="text-blue-300">Full-Stack Developer</span> building modern, scalable, and user-friendly web applications from front-end to back-end.</p>
 </section>
 
 <!-- About Section -->
-<section id="about" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-4xl mx-auto mb-10">
-  <h3 class="text-3xl font-bold mb-6 text-center">About Me</h3>
-  <p class="text-gray-300 leading-relaxed">I craft responsive interfaces with React and Tailwind, build secure APIs with Node.js and Express, and manage databases like MongoDB and SQL. My mission is to turn ideas into reliable, impactful solutions.</p>
+<section id="about" class="py-16 px-6 bg-gray-900/70 rounded-2xl shadow-lg max-w-6xl mx-auto mb-10">
+  <h3 class="text-3xl font-bold mb-8 text-center">About Me</h3>
+  <div class="flex flex-col lg:flex-row items-center gap-8">
+    <!-- Photo on the left -->
+    <div class="flex-shrink-0" data-aos="fade-right">
+      <img src="./style.css/images/jaja.jpeg" alt="Jaliane" class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-blue-500 shadow-lg object-cover hover:scale-105 transition-transform duration-300" />
+    </div>
+    
+    <!-- About content -->
+    <div class="flex-1 text-center lg:text-left" data-aos="fade-left">
+      <p class="text-gray-300 leading-relaxed text-lg">
+        I craft responsive interfaces with React and Tailwind, build secure APIs with Node.js and Express, and manage databases like MongoDB and SQL. My mission is to turn ideas into reliable, impactful solutions.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center lg:justify-start gap-4">
+        <span class="px-4 py-2 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium">Full-Stack Developer</span>
+        <span class="px-4 py-2 bg-green-500/20 text-green-300 rounded-full text-sm font-medium">Problem Solver</span>
+        <span class="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium">Team Player</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Skills Section -->
-<section id="skills" class="py-16 px-6 max-w-4xl mx-auto">
-  <h3 class="text-3xl font-bold mb-10 text-center" data-aos="fade-up">My Skills</h3>
-  <div class="space-y-6">
-    <div data-aos="fade-right" data-aos-delay="100">
-      <div class="flex justify-between items-center mb-2">
-        <h4 class="text-lg font-semibold flex items-center">
-          <i class="fab fa-js-square text-yellow-400 mr-2"></i>JavaScript
-        </h4>
-        <span class="text-sm text-gray-400">90%</span>
+<section id="skills" class="py-16 px-6 max-w-6xl mx-auto">
+  <h3 class="text-3xl font-bold mb-10 text-center" data-aos="fade-up">My Skills & Technologies</h3>
+  
+  <!-- Tech Skills Cards -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12" data-aos="fade-up" data-aos-delay="100">
+    <!-- JavaScript Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-yellow-400/20 rounded-xl group-hover:bg-yellow-400/30 transition-colors">
+        <i class="fab fa-js-square text-4xl text-yellow-400"></i>
       </div>
-      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
-        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 h-4 rounded-full animate-grow" style="--width:90%"></div>
-      </div>
+      <h4 class="text-lg font-semibold text-gray-200">JavaScript</h4>
     </div>
-    <div data-aos="fade-right" data-aos-delay="200">
-      <div class="flex justify-between items-center mb-2">
-        <h4 class="text-lg font-semibold flex items-center">
-          <i class="fab fa-react text-cyan-400 mr-2"></i>React
-        </h4>
-        <span class="text-sm text-gray-400">85%</span>
+
+    <!-- React Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-cyan-400/20 rounded-xl group-hover:bg-cyan-400/30 transition-colors">
+        <i class="fab fa-react text-4xl text-cyan-400"></i>
       </div>
-      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
-        <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-4 rounded-full animate-grow" style="--width:85%"></div>
-      </div>
+      <h4 class="text-lg font-semibold text-gray-200">React</h4>
     </div>
-    <div data-aos="fade-right" data-aos-delay="300">
-      <div class="flex justify-between items-center mb-2">
-        <h4 class="text-lg font-semibold flex items-center">
-          <i class="fab fa-node-js text-green-400 mr-2"></i>Node.js
-        </h4>
-        <span class="text-sm text-gray-400">80%</span>
+
+    <!-- Node.js Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-green-400/20 rounded-xl group-hover:bg-green-400/30 transition-colors">
+        <i class="fab fa-node-js text-4xl text-green-400"></i>
       </div>
-      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
-        <div class="bg-gradient-to-r from-green-400 to-green-500 h-4 rounded-full animate-grow" style="--width:80%"></div>
-      </div>
+      <h4 class="text-lg font-semibold text-gray-200">Node.js</h4>
     </div>
-    <div data-aos="fade-right" data-aos-delay="400">
-      <div class="flex justify-between items-center mb-2">
-        <h4 class="text-lg font-semibold flex items-center">
-          <i class="fab fa-python text-blue-400 mr-2"></i>Python
-        </h4>
-        <span class="text-sm text-gray-400">75%</span>
+
+    <!-- Python Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-400/20 rounded-xl group-hover:bg-blue-400/30 transition-colors">
+        <i class="fab fa-python text-4xl text-blue-400"></i>
       </div>
-      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
-        <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-4 rounded-full animate-grow" style="--width:75%"></div>
-      </div>
+      <h4 class="text-lg font-semibold text-gray-200">Python</h4>
     </div>
-    <div data-aos="fade-right" data-aos-delay="500">
-      <div class="flex justify-between items-center mb-2">
-        <h4 class="text-lg font-semibold flex items-center">
-          <i class="fas fa-database text-purple-400 mr-2"></i>MongoDB
-        </h4>
-        <span class="text-sm text-gray-400">70%</span>
+
+    <!-- MongoDB Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-purple-400/20 rounded-xl group-hover:bg-purple-400/30 transition-colors">
+        <i class="fas fa-database text-4xl text-purple-400"></i>
       </div>
-      <div class="bg-gray-700 rounded-full h-4 w-full skill-bar">
-        <div class="bg-gradient-to-r from-purple-400 to-purple-500 h-4 rounded-full animate-grow" style="--width:70%"></div>
+      <h4 class="text-lg font-semibold text-gray-200">MongoDB</h4>
+    </div>
+
+    <!-- HTML Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-orange-400/20 rounded-xl group-hover:bg-orange-400/30 transition-colors">
+        <i class="fab fa-html5 text-4xl text-orange-400"></i>
+      </div>
+      <h4 class="text-lg font-semibold text-gray-200">HTML5</h4>
+    </div>
+
+    <!-- CSS Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colors">
+        <i class="fab fa-css3-alt text-4xl text-blue-500"></i>
+      </div>
+      <h4 class="text-lg font-semibold text-gray-200">CSS3</h4>
+    </div>
+
+    <!-- Git Card -->
+    <div class="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group">
+      <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-red-400/20 rounded-xl group-hover:bg-red-400/30 transition-colors">
+        <i class="fab fa-git-alt text-4xl text-red-400"></i>
+      </div>
+      <h4 class="text-lg font-semibold text-gray-200">Git</h4>
+    </div>
+  </div>
+
+  <!-- Other Interests Section -->
+  <div class="mt-16" data-aos="fade-up" data-aos-delay="200">
+    <h4 class="text-2xl font-bold mb-8 text-center text-blue-400">Beyond Coding</h4>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Basketball Interest -->
+      <div class="glass-effect rounded-xl p-8 text-center hover:scale-105 transition-all duration-300 group">
+        <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-orange-500/20 rounded-full group-hover:bg-orange-500/30 transition-colors">
+          <i class="fas fa-basketball-ball text-4xl text-orange-500"></i>
+        </div>
+        <h5 class="text-xl font-semibold text-gray-200 mb-3">Basketball</h5>
+        <p class="text-gray-300">Passionate about basketball, I enjoy playing and following the sport. It keeps me active and teaches me teamwork and discipline.</p>
+      </div>
+
+      <!-- Youth Generation Club -->
+      <div class="glass-effect rounded-xl p-8 text-center hover:scale-105 transition-all duration-300 group">
+        <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors">
+          <i class="fas fa-users text-4xl text-green-500"></i>
+        </div>
+        <h5 class="text-xl font-semibold text-gray-200 mb-3">Youth Generation Club</h5>
+        <p class="text-gray-300">Active member of the Youth Generation Club, contributing to community development and youth empowerment initiatives.</p>
       </div>
     </div>
   </div>
