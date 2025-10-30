@@ -22,6 +22,14 @@
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
       scroll-behavior: smooth;
+      will-change: background-position;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        animation: none;
+        background: #0f172a;
+      }
     }
     
     @keyframes grow {
@@ -70,6 +78,13 @@
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
+      will-change: transform;
+    }
+    
+    @supports not (backdrop-filter: blur(10px)) {
+      .glass-effect {
+        background: rgba(15, 23, 42, 0.9);
+      }
     }
     
     .skill-bar {
@@ -88,17 +103,230 @@
     }
     
     @keyframes shimmer {
-      0% { transform: translateX(-100%); }
+      0% { transform: translateX(-100%); will-change: transform; }
       100% { transform: translateX(100%); }
     }
     
+    @media (prefers-reduced-motion: reduce) {
+      .skill-bar::after {
+        animation: none;
+      }
+      .float-animation,
+      .pulse-glow {
+        animation: none;
+      }
+    }
+    
+    @keyframes shadowGrow {
+      0%, 100% {
+        box-shadow: 
+          0 0 0 4px rgba(59, 130, 246, 0.3),
+          0 0 20px rgba(59, 130, 246, 0.4),
+          0 10px 40px rgba(0, 0, 0, 0.5),
+          inset 0 0 60px rgba(59, 130, 246, 0.1);
+      }
+      50% {
+        box-shadow: 
+          0 0 0 6px rgba(59, 130, 246, 0.5),
+          0 0 35px rgba(59, 130, 246, 0.6),
+          0 15px 50px rgba(0, 0, 0, 0.6),
+          inset 0 0 70px rgba(59, 130, 246, 0.15);
+      }
+    }
+    
+    .hero-photo {
+      box-shadow: 
+        0 0 0 4px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.4),
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        inset 0 0 60px rgba(59, 130, 246, 0.1);
+      animation: shadowGrow 4s ease-in-out infinite;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform, box-shadow;
+    }
+    
+    .hero-photo:hover {
+      transform: scale(1.08) rotate(2deg);
+      animation: none;
+      box-shadow: 
+        0 0 0 6px rgba(59, 130, 246, 0.5),
+        0 0 40px rgba(59, 130, 246, 0.6),
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 80px rgba(59, 130, 246, 0.2);
+    }
+    
     .project-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+      contain: layout style paint;
     }
     
     .project-card:hover {
       transform: translateY(-10px) scale(1.02);
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #3b82f6, #3b82f6, transparent);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 30px;
+      }
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeInTimeline 0.6s ease-out forwards;
+    }
+    
+    @keyframes fadeInTimeline {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #3b82f6;
+      border: 4px solid #0f172a;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+      z-index: 10;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-dot {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        transform: translateX(-50%) scale(1);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 1);
+        transform: translateX(-50%) scale(1.1);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-dot {
+        left: 30px;
+      }
+    }
+    
+    .timeline-content {
+      position: relative;
+      width: 45%;
+      padding: 2rem;
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+      transform: translateY(-5px);
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+      }
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+      text-align: left;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-right: auto;
+      text-align: right;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 80px;
+        margin-right: 0;
+        text-align: left;
+      }
+    }
+    
+    .timeline-date {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3b82f6;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .timeline-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #f1f5f9;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-company {
+      font-size: 1rem;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+    }
+    
+    .timeline-description {
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    
+    .timeline-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-skills {
+        justify-content: flex-start;
+      }
+    }
+    
+    .timeline-item:nth-child(even) .timeline-skills {
+      justify-content: flex-end;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-item:nth-child(even) .timeline-skills {
+        justify-content: flex-start;
+      }
     }
     
     .theme-transition {
@@ -196,7 +424,7 @@
 
 <!-- Navbar -->
 <nav class="p-6 flex justify-between items-center glass-effect sticky top-0 z-20 theme-transition">
-  <h1 class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"> Jaliane.dev</h1>
+  <h1 class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"> Jaja.dev</h1>
   <div class="flex items-center space-x-4">
     <ul class="hidden md:flex space-x-6">
       <li><a href="#about" class="hover:text-blue-400 transition-colors duration-300 relative group">
@@ -205,6 +433,10 @@
       </a></li>
       <li><a href="#skills" class="hover:text-blue-400 transition-colors duration-300 relative group">
         Skills
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+      </a></li>
+      <li><a href="#experience" class="hover:text-blue-400 transition-colors duration-300 relative group">
+        Experience
         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
       </a></li>
       <li><a href="#projects" class="hover:text-blue-400 transition-colors duration-300 relative group">
@@ -253,7 +485,7 @@
   <div class="flex flex-col lg:flex-row items-center gap-8">
     <!-- Photo on the left -->
     <div class="flex-shrink-0" data-aos="fade-right">
-      <img src="./style.css/images/jaja.jpeg" alt="Jaliane" class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-blue-500 shadow-lg object-cover hover:scale-105 transition-transform duration-300" />
+      <img src="./style.css/images/jaja.jpeg" alt="Jaliane" class="hero-photo w-48 h-48 sm:w-56 sm:h-56 rounded-full object-cover" />
     </div>
     
     <!-- About content -->
@@ -373,21 +605,21 @@
     
     <!-- Project Filter -->
     <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
-      <card class="filter-btn active px-6 py-2 rounded-full bg-blue-500 text-white transition-all duration-300 hover:scale-105" data-filter="all">
+      <button class="filter-btn active px-6 py-2 rounded-full bg-blue-500 text-white transition-all duration-300 hover:scale-105 cursor-pointer" data-filter="all">
         All Projects
-      </card>
-      <card class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105" data-filter="web">
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105 cursor-pointer" data-filter="web">
         Web Development
-      </card>
-      <card class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105" data-filter="mobile">
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105 cursor-pointer" data-filter="mobile">
         Mobile Apps
-      </card>
-      <card class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105" data-filter="fullstack">
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition-all duration-300 hover:scale-105 cursor-pointer" data-filter="fullstack">
         Full Stack
-      </card>
+      </button>
     </div>
     
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="projects-grid">
 
       <!-- Project Card 1: Portfolio Website -->
       <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="100" data-category="web">
@@ -426,46 +658,91 @@
 
       <!-- Project Card 2: E-Commerce App -->
       <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="200" data-category="fullstack">
-         
-        <card class="p-6">
-          <h3 class="text-2xl font-semibold mb-2">E-Commerce App</h3>
-          <p class="text-gray-300 mb-4">
+        <div class="p-6 h-full flex flex-col">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-2xl font-semibold">E-Commerce App</h3>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full">React</span>
+              <span class="px-2 py-1 bg-green-500/20 text-green-300 text-xs rounded-full">Node.js</span>
+            </div>
+          </div>
+          <p class="text-gray-300 mb-4 flex-grow">
             A fullstack shopping app with authentication, product catalog, and payment system.
           </p>
-        </card>
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+          <div class="flex items-center text-sm text-gray-400">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Coming Soon</span>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <a href="#" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Live Demo</span>
+          </a>
+          <a href="#" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
 
       <!-- Project Card 3: React Dashboard -->
       <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="300" data-category="web">
-     
-        <card class="p-6">
-          <h3 class="text-2xl font-semibold mb-2">React Dashboard</h3>
-          <p class="text-gray-300 mb-4">
+        <div class="p-6 h-full flex flex-col">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-2xl font-semibold">React Dashboard</h3>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full">React</span>
+              <span class="px-2 py-1 bg-pink-500/20 text-pink-300 text-xs rounded-full">Charts</span>
+            </div>
+          </div>
+          <p class="text-gray-300 mb-4 flex-grow">
             A product management dashboard built with React, featuring data visualization and CRUD operations.
           </p>
-        </card>
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+          <div class="flex items-center text-sm text-gray-400">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Coming Soon</span>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <a href="#" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Live Demo</span>
+          </a>
+          <a href="#" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
 
       <!-- Project Card 4: Chat App -->
       <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-lg project-card group" data-aos="fade-up" data-aos-delay="400" data-category="fullstack">
-      
-        <card class="p-6">
-          <h3 class="text-2xl font-semibold mb-2">Chat App</h3>
-          <p class="text-gray-300 mb-4">
+        <div class="p-6 h-full flex flex-col">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-2xl font-semibold">Chat App</h3>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 bg-green-500/20 text-green-300 text-xs rounded-full">Socket.io</span>
+              <span class="px-2 py-1 bg-yellow-500/20 text-yellow-300 text-xs rounded-full">Node.js</span>
+            </div>
+          </div>
+          <p class="text-gray-300 mb-4 flex-grow">
             Real-time chat application using Socket.io and Node.js, with private and group chat features.
           </p>
-        </card>
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
-          <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white font-semibold">Live Demo</a>
-          <a href="#" class="px-4 py-2 bg-gray-700 hover:bg-gray-800 rounded text-white font-semibold">GitHub</a>
+          <div class="flex items-center text-sm text-gray-400">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Coming Soon</span>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <a href="#" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Live Demo</span>
+          </a>
+          <a href="#" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
 
@@ -541,25 +818,32 @@
     offset: 100
   });
 
-  // Initialize particles
-  tsParticles.load("tsparticles", {
-    background: { color: "transparent" },
-    fpsLimit: 60,
-    interactivity: {
-      events: { onHover: { enable: true, mode: "repulse" }, resize: true },
-      modes: { repulse: { distance: 100, duration: 0.4 } }
-    },
-    particles: {
-      color: { value: "#38bdf8" },
-      links: { color: "#38bdf8", distance: 150, enable: true, opacity: 0.3, width: 1 },
-      move: { direction: "none", enable: true, outModes: "bounce", random: false, speed: 1, straight: false },
-      number: { density: { enable: true, area: 800 }, value: 60 },
-      opacity: { value: 0.5 },
-      shape: { type: "circle" },
-      size: { value: { min: 1, max: 4 } },
-    },
-    detectRetina: true,
-  });
+  // Initialize particles with optimizations
+  const isMobile = window.innerWidth < 768;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (!prefersReducedMotion) {
+    tsParticles.load("tsparticles", {
+      background: { color: "transparent" },
+      fpsLimit: 30,
+      interactivity: {
+        events: { onHover: { enable: !isMobile, mode: "repulse" }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 } }
+      },
+      particles: {
+        color: { value: "#38bdf8" },
+        links: { color: "#38bdf8", distance: 150, enable: true, opacity: 0.3, width: 1 },
+        move: { direction: "none", enable: true, outModes: "bounce", random: false, speed: 0.5, straight: false },
+        number: { density: { enable: true, area: 800 }, value: isMobile ? 30 : 40 },
+        opacity: { value: 0.5 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 3 } },
+      },
+      detectRetina: true,
+    });
+  } else {
+    document.getElementById('tsparticles').style.display = 'none';
+  }
 
   // Typing animation
   document.addEventListener('DOMContentLoaded', function() {
