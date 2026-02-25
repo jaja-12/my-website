@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-import Message from "../models/message.js";
 
 export const sendMessage = async (req, res) => {
   const { name, email, message } = req.body;
@@ -9,27 +8,26 @@ export const sendMessage = async (req, res) => {
   }
 
   try {
-    // Save message to MongoDB
-    const newMessage = new Message({ name, email, message });
-    await newMessage.save();
-
-    // Send email notification
+    // Send email notification only (no database)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER, 
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
       }
     });
 
+    const toAddress = process.env.EMAIL_TO || process.env.EMAIL_USER;
+
     await transporter.sendMail({
-      from: email,
-      to: process.env.EMAIL_USER, 
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+      replyTo: email,
+      to: toAddress,
       subject: `Portfolio Contact from ${name}`,
-      text: message,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     });
 
-    res.json({ success: "Message saved and sent successfully!" });
+    res.json({ success: "Message sent successfully!" });
   } catch (error) {
     res.status(500).json({ error: "Something went wrong!", details: error.message });
   }
