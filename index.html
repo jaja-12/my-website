@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jaliane is a full-stack developer building modern, scalable web applications with a focus on performance, accessibility, and clean user experiences." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Jaliane" />
+  <meta property="og:title" content="Jaliane | Fullstack Developer" />
+  <meta property="og:description" content="Portfolio of Jaliane: projects, skills, and contact for full-stack web development work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jaja-12.vercel.app/" />
+  <meta property="og:image" content="./style.css/images/jaja2.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jaliane | Fullstack Developer" />
+  <meta name="twitter:description" content="Portfolio of Jaliane: full-stack projects, experience, and contact." />
   <title>Jaliane | Fullstack Developer</title>
+  <link rel="canonical" href="https://jaja-12.vercel.app/" />
+  <link rel="icon" type="image/jpeg" href="./style.css/images/jaja2.jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
   <style>
     @keyframes gradientShift {
@@ -415,6 +427,9 @@
   </style>
 </head>
 <body class="text-gray-200 min-h-screen relative">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-md z-50">
+  Skip to main content
+</a>
 
 <!-- Scroll Progress Indicator -->
 <div class="scroll-indicator" id="scrollIndicator"></div>
@@ -424,7 +439,7 @@
 
 <!-- Navbar -->
 <nav class="p-6 flex justify-between items-center glass-effect sticky top-0 z-20 theme-transition">
-  <h1 class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"> Jaja.dev</h1>
+  <p class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">Jaja.dev</p>
   <div class="flex items-center space-x-4">
     <ul class="hidden md:flex space-x-6">
       <li><a href="#about" class="hover:text-blue-400 transition-colors duration-300 relative group">
@@ -433,10 +448,6 @@
       </a></li>
       <li><a href="#skills" class="hover:text-blue-400 transition-colors duration-300 relative group">
         Skills
-        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
-      </a></li>
-      <li><a href="#experience" class="hover:text-blue-400 transition-colors duration-300 relative group">
-        Experience
         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
       </a></li>
       <li><a href="#projects" class="hover:text-blue-400 transition-colors duration-300 relative group">
@@ -448,15 +459,17 @@
         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
       </a></li>
     </ul>
-    <button id="theme-toggle" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded text-sm transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+    <button id="theme-toggle" aria-label="Toggle theme" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded text-sm transition-all duration-300 hover:scale-105 flex items-center space-x-2">
       <i class="fas fa-moon" id="theme-icon"></i>
       <span id="theme-text">Dark</span>
     </button>
-    <button id="mobile-menu-toggle" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
+    <button id="mobile-menu-toggle" aria-label="Open mobile menu" aria-expanded="false" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
       <i class="fas fa-bars text-xl"></i>
     </button>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden">
@@ -475,7 +488,7 @@
 
 <!-- Hero Section -->
 <section class="flex flex-col items-center justify-center text-center py-20 px-6">
-  <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Hi, I’m <span class="text-blue-400">Jaliane</span></h2>
+  <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">Hi, I’m <span class="text-blue-400">Jaliane</span></h1>
   <p class="text-lg sm:text-xl max-w-2xl">A passionate <span class="text-blue-300">Full-Stack Developer</span> building modern, scalable, and user-friendly web applications from front-end to back-end.</p>
 </section>
 
@@ -645,11 +658,11 @@
           </div>
         </div>
         <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <a href="https://jaja-12.vercel.app" target="_blank" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+          <a href="https://jaja-12.vercel.app" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
             <i class="fas fa-external-link-alt"></i>
             <span>Live Demo</span>
           </a>
-          <a href="https://github.com/jaja-12/my-website" target="_blank" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+          <a href="https://github.com/jaja-12/my-website" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
             <i class="fab fa-github"></i>
             <span>GitHub</span>
           </a>
@@ -675,14 +688,10 @@
           </div>
         </div>
         <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <a href="#" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
-            <i class="fas fa-external-link-alt"></i>
-            <span>Live Demo</span>
-          </a>
-          <a href="#" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
+          <span class="px-6 py-3 bg-gray-700/80 rounded-lg text-white/80 font-semibold flex items-center space-x-2 cursor-not-allowed" aria-label="Project links coming soon">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Links Coming Soon</span>
+          </span>
         </div>
       </div>
 
@@ -705,14 +714,10 @@
           </div>
         </div>
         <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <a href="#" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
-            <i class="fas fa-external-link-alt"></i>
-            <span>Live Demo</span>
-          </a>
-          <a href="#" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
+          <span class="px-6 py-3 bg-gray-700/80 rounded-lg text-white/80 font-semibold flex items-center space-x-2 cursor-not-allowed" aria-label="Project links coming soon">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Links Coming Soon</span>
+          </span>
         </div>
       </div>
 
@@ -735,14 +740,10 @@
           </div>
         </div>
         <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <a href="#" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
-            <i class="fas fa-external-link-alt"></i>
-            <span>Live Demo</span>
-          </a>
-          <a href="#" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
+          <span class="px-6 py-3 bg-gray-700/80 rounded-lg text-white/80 font-semibold flex items-center space-x-2 cursor-not-allowed" aria-label="Project links coming soon">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Links Coming Soon</span>
+          </span>
         </div>
       </div>
 
@@ -756,19 +757,23 @@
 <section id="contact" class="py-16 px-6 glass-effect rounded-2xl shadow-lg max-w-4xl mx-auto mb-10" data-aos="fade-up">
   <h3 class="text-3xl font-bold mb-6 text-center">Contact Me</h3>
   <form action="/api/contact" method="POST" id="contact-form" class="space-y-6">
+    <input type="text" id="website" name="website" autocomplete="off" tabindex="-1" class="hidden" aria-hidden="true" />
     <div class="grid md:grid-cols-2 gap-6">
       <div class="relative">
+        <label for="name" class="sr-only">Name</label>
         <input type="text" id="name" name="name" placeholder="Your Name" required 
                class="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-400 focus:outline-none transition-all duration-300 focus:ring-2 focus:ring-blue-400/20" />
         <i class="fas fa-user absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
       </div>
       <div class="relative">
+        <label for="email" class="sr-only">Email</label>
         <input type="email" id="email" name="email" placeholder="Your Email" required 
                class="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-400 focus:outline-none transition-all duration-300 focus:ring-2 focus:ring-blue-400/20" />
         <i class="fas fa-envelope absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
       </div>
     </div>
     <div class="relative">
+      <label for="message" class="sr-only">Message</label>
       <textarea id="message" name="message" placeholder="Your Message" rows="4" required 
                 class="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-400 focus:outline-none transition-all duration-300 focus:ring-2 focus:ring-blue-400/20 resize-none"></textarea>
       <i class="fas fa-comment absolute right-4 top-4 text-gray-400"></i>
@@ -777,7 +782,7 @@
       <i class="fas fa-paper-plane"></i>
       <span>Send Message</span>
     </button>
-    <div id="form-status" class="hidden text-center py-2 px-4 rounded-lg"></div>
+    <div id="form-status" role="status" aria-live="polite" class="hidden text-center py-2 px-4 rounded-lg"></div>
   </form>
 </section>
 
@@ -786,28 +791,26 @@
   <h3 class="text-2xl font-bold mb-6">Connect with Me</h3>
   <div class="flex justify-center space-x-6">
     <!-- GitHub -->
-    <a href="https://github.com/jaja-12" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-full shadow-lg transition transform hover:scale-110">
+    <a href="https://github.com/jaja-12" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-full shadow-lg transition transform hover:scale-110">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.41 7.86 10.95.58.11.79-.25.79-.56 0-.28-.01-1.03-.02-2.01-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.3-1.68-1.3-1.68-1.07-.73.08-.72.08-.72 1.19.09 1.81 1.22 1.81 1.22 1.05 1.8 2.75 1.28 3.42.98.11-.76.41-1.28.74-1.57-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.17a11.1 11.1 0 0 1 5.79 0c2.2-1.48 3.17-1.17 3.17-1.17.63 1.59.23 2.76.11 3.05.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.24 5.63.42.36.8 1.07.8 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.68.8.56C20.21 21.41 23.5 17.09 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
       </svg>
     </a>
     <!-- Instagram -->
-    <a href="https://www.instagram.com/@Jaja/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-110" style="background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile" class="w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-110" style="background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="white" viewBox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.958.24 2.418.403a4.918 4.918 0 0 1 1.774 1.033 4.918 4.918 0 0 1 1.033 1.774c.163.46.347 1.248.403 2.418.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.958-.403 2.418a4.918 4.918 0 0 1-1.033 1.774 4.918 4.918 0 0 1-1.774 1.033c-.46.163-1.248.347-2.418.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.958-.24-2.418-.403a4.918 4.918 0 0 1-1.774-1.033 4.918 4.918 0 0 1-1.033-1.774c-.163-.46-.347-1.248-.403-2.418C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.958.403-2.418a4.918 4.918 0 0 1 1.033-1.774 4.918 4.918 0 0 1 1.774-1.033c.46-.163 1.248-.347 2.418-.403C8.416 2.175 8.796 2.163 12 2.163zm0 1.838c-3.17 0-3.54.012-4.788.07-1.047.049-1.614.222-1.99.37a3.09 3.09 0 0 0-1.13.735 3.09 3.09 0 0 0-.735 1.13c-.148.376-.321.943-.37 1.99-.058 1.248-.07 1.618-.07 4.788s.012 3.54.07 4.788c.049 1.047.222 1.614.37 1.99.17.436.393.815.735 1.13.317.317.694.547 1.13.735.376.148.943.321 1.99.37 1.248.058 1.618.07 4.788.07s3.54-.012 4.788-.07c1.047-.049 1.614-.222 1.99-.37a3.09 3.09 0 0 0 1.13-.735 3.09 3.09 0 0 0 .735-1.13c.148-.376.321-.943.37-1.99.058-1.248.07-1.618.07-4.788s-.012-3.54-.07-4.788c-.049-1.047-.222-1.614-.37-1.99a3.09 3.09 0 0 0-.735-1.13 3.09 3.09 0 0 0-1.13-.735c-.376-.148-.943-.321-1.99-.37-1.248-.058-1.618-.07-4.788-.07zm0 3.677a5.16 5.16 0 1 1 0 10.32 5.16 5.16 0 0 1 0-10.32zm0 1.838a3.322 3.322 0 1 0 0 6.644 3.322 3.322 0 0 0 0-6.644zm5.406-.462a1.2 1.2 0 1 1-2.401 0 1.2 1.2 0 0 1 2.401 0z"/>
       </svg>
     </a>
-     <!-- X (Twitter) -->
-     <a href="https://x.com/your-username" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-sky-500 rounded-full shadow-lg transition transform hover:scale-110">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-      </svg>
+    <a href="#contact" aria-label="Go to contact form" class="w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-blue-600 rounded-full shadow-lg transition transform hover:scale-110">
+      <i class="fas fa-envelope text-white"></i>
     </a>
-  </div>
   </div>
 </section>
 
-<footer class="py-6 text-center bg-gray-900/60">© 2025 Jaja. Built with ❤️</footer>
+</main>
+
+<footer class="py-6 text-center bg-gray-900/60">© <span id="current-year">2026</span> Jaja. Built with ❤️</footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -845,65 +848,6 @@
     document.getElementById('tsparticles').style.display = 'none';
   }
 
-  // Typing animation
-  document.addEventListener('DOMContentLoaded', function() {
-    // Name typing effect
-    const nameTyping = new Typed('#name-typing', {
-      strings: ['Jaliane'],
-      typeSpeed: 100,
-      showCursor: false
-    });
-
-    // Role typing effect
-    const roleTyping = new Typed('#role-typing', {
-      strings: ['Full-Stack Developer', 'Web Developer', 'Software Engineer'],
-      typeSpeed: 50,
-      backSpeed: 30,
-      loop: true,
-      showCursor: false
-    });
-
-    // Animated counters
-    const counters = document.querySelectorAll('.counter');
-    const animateCounters = () => {
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const count = parseInt(counter.innerText);
-        const increment = target / 100;
-        
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(() => animateCounters(), 20);
-        } else {
-          counter.innerText = target;
-        }
-      });
-    };
-
-    // Trigger counter animation when in view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-
-    const statsSection = document.querySelector('.grid.grid-cols-3');
-    if (statsSection) {
-      observer.observe(statsSection);
-    }
-  });
-
-  // Scroll progress indicator
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    document.getElementById('scrollIndicator').style.transform = `scaleX(${scrollPercent / 100})`;
-  });
-
   // Mobile menu toggle
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -911,6 +855,7 @@
 
   mobileMenuToggle.addEventListener('click', () => {
     mobileMenu.classList.remove('hidden');
+    mobileMenuToggle.setAttribute('aria-expanded', 'true');
     setTimeout(() => {
       mobileMenu.querySelector('.absolute').classList.remove('translate-x-full');
     }, 10);
@@ -918,6 +863,7 @@
 
   mobileMenuClose.addEventListener('click', () => {
     mobileMenu.querySelector('.absolute').classList.add('translate-x-full');
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
     setTimeout(() => {
       mobileMenu.classList.add('hidden');
     }, 300);
@@ -927,6 +873,7 @@
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.querySelector('.absolute').classList.add('translate-x-full');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
       setTimeout(() => {
         mobileMenu.classList.add('hidden');
       }, 300);
@@ -980,7 +927,8 @@
       const payload = {
         name: this.querySelector('#name').value.trim(),
         email: this.querySelector('#email').value.trim(),
-        message: this.querySelector('#message').value.trim()
+        message: this.querySelector('#message').value.trim(),
+        website: this.querySelector('#website').value.trim()
       };
 
       const response = await fetch(this.action, {
@@ -992,17 +940,19 @@
         body: JSON.stringify(payload)
       });
       
+      const result = await response.json().catch(() => ({}));
+
       if (response.ok) {
         formStatus.className = 'text-green-400 bg-green-400/20 py-2 px-4 rounded-lg';
         formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
         formStatus.classList.remove('hidden');
         this.reset();
       } else {
-        throw new Error('Form submission failed');
+        throw new Error(result.error || 'Form submission failed');
       }
     } catch (error) {
       formStatus.className = 'text-red-400 bg-red-400/20 py-2 px-4 rounded-lg';
-      formStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
+      formStatus.textContent = error.message || 'Sorry, there was an error sending your message. Please try again.';
       formStatus.classList.remove('hidden');
     } finally {
       submitBtn.innerHTML = originalText;
@@ -1099,20 +1049,22 @@
   document.head.appendChild(style);
 
   // Performance optimizations
-  // Lazy loading for images
+  // Lazy loading for deferred images
   const images = document.querySelectorAll('img[data-src]');
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.remove('lazy');
-        imageObserver.unobserve(img);
-      }
+  if (images.length > 0) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
     });
-  });
 
-  images.forEach(img => imageObserver.observe(img));
+    images.forEach(img => imageObserver.observe(img));
+  }
 
   // Preload critical resources
   const preloadLink = document.createElement('link');
@@ -1144,6 +1096,8 @@
   };
 
   optimizeParticles();
+
+  document.getElementById("current-year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
