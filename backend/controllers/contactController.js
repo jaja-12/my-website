@@ -6,6 +6,11 @@ const submissionTracker = new Map();
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const looksLikePlaceholder = (value) =>
+  typeof value !== "string" ||
+  value.trim() === "" ||
+  /your[_-]|example\.com|placeholder|change[_-]?me|insert[_-]?here/i.test(value);
+
 const getClientIp = (req) => {
   const forwardedFor = req.headers["x-forwarded-for"];
   if (typeof forwardedFor === "string" && forwardedFor.length > 0) {
@@ -65,9 +70,14 @@ export const sendMessage = async (req, res) => {
   }
 
   try {
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      return res.status(500).json({
-        error: "Email credentials are not configured on the server."
+    if (
+      looksLikePlaceholder(process.env.EMAIL_USER) ||
+      looksLikePlaceholder(process.env.EMAIL_PASS) ||
+      looksLikePlaceholder(process.env.EMAIL_TO)
+    ) {
+      return res.status(503).json({
+        error:
+          "The contact form is temporarily unavailable. Please email me directly or reach out via GitHub."
       });
     }
 
