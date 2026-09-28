@@ -4,12 +4,23 @@
 
 /* ---------- Configuration ---------- */
 const CONFIG = {
-  // Contact form endpoint. Defaults to same-origin; point this at your
-  // deployed API (e.g. "https://api.example.com/api/contact") if needed.
-  contactEndpoint: "/api/contact",
+  // EmailJS credentials — replace with your own from https://www.emailjs.com/
+  emailjsPublicKey: "YOUR_PUBLIC_KEY",
+  emailjsServiceId: "YOUR_SERVICE_ID",
+  emailjsTemplateId: "YOUR_TEMPLATE_ID",
   // Request timeout in milliseconds
   requestTimeout: 15000,
 };
+
+/* ---------- EmailJS initialisation ---------- */
+(function initEmailJS() {
+  if (typeof emailjs === "undefined") return;
+  try {
+    emailjs.init(CONFIG.emailjsPublicKey);
+  } catch (e) {
+    console.warn("EmailJS init failed:", e);
+  }
+})();
 
 /* ---------- Project data (single source of truth) ---------- */
 const PROJECTS = [
@@ -556,51 +567,33 @@ form.addEventListener("submit", async (event) => {
   submitBtn.disabled = true;
   submitBtn.innerHTML = `<svg class="icon" style="animation:spin 0.9s linear infinite"><use href="#i-spinner" /></svg><span>Sending...</span>`;
 
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), CONFIG.requestTimeout);
+  if (typeof emailjs === "undefined") {
+    showStatus("Email service failed to load. Please refresh the page and try again.", "error");
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = `<svg class="icon"><use href="#i-send" /></svg><span>Send Message</span>`;
+    return;
+  }
+
+  const templateParams = {
+    from_name: payload.name,
+    from_email: payload.email,
+    message: payload.message,
+    to_email: "nzamukundajaliane102@gmail.com",
+  };
 
   try {
-    const response = await fetch(CONFIG.contactEndpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
-
-    let result = {};
-    try {
-      result = await response.json();
-    } catch (e) {
-      /* non-JSON response */
-    }
-
-    if (response.ok) {
-      showStatus(
-        result.success || "Message sent successfully! I'll get back to you soon.",
-        "success"
-      );
-      form.reset();
-    } else if (response.status === 429) {
-      showStatus(
-        result.error || "You've sent a few messages recently. Please wait a bit before trying again.",
-        "error"
-      );
-    } else {
-      showStatus(
-        result.error || "Something went wrong while sending your message. Please try again.",
-        "error"
-      );
-    }
+    await emailjs.send(CONFIG.emailjsServiceId, CONFIG.emailjsTemplateId, templateParams);
+    showStatus("Message sent successfully! I'll get back to you soon.", "success");
+    form.reset();
   } catch (error) {
     const offline = !navigator.onLine;
     showStatus(
       offline
         ? "You appear to be offline. Check your connection and try again."
-        : "Couldn't reach the server. Please try again in a moment.",
+        : "Couldn't send your message. Please try again in a moment.",
       "error"
     );
   } finally {
-    clearTimeout(timeoutId);
     submitBtn.disabled = false;
     submitBtn.innerHTML = `<svg class="icon"><use href="#i-send" /></svg><span>Send Message</span>`;
     statusTimeout.id = setTimeout(hideStatus, 8000);
