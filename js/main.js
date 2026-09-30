@@ -5,9 +5,9 @@
 /* ---------- Configuration ---------- */
 const CONFIG = {
   // EmailJS credentials — replace with your own from https://www.emailjs.com/
-  emailjsPublicKey: "YOUR_PUBLIC_KEY",
-  emailjsServiceId: "YOUR_SERVICE_ID",
-  emailjsTemplateId: "YOUR_TEMPLATE_ID",
+  emailjsPublicKey: "LsF-qAUdZsPJqjEZb",
+  emailjsServiceId: "service_okunfpd",
+  emailjsTemplateId: "template_ny0s6yk",
   // Request timeout in milliseconds
   requestTimeout: 15000,
 };
